@@ -1,0 +1,6 @@
+findFranchise: Ben Stokes
+findFranchise: Robin Uthappa
+listPlayers: RR
+listPlayers: SRH
+franchiseBuddies: Krunal Pandya : Kieron Pollard
+playerConnect: Kedar Jadhav : Ishan Kishan
