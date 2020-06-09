@@ -1,0 +1,3 @@
+TEAM1 / A / B / C
+TEAM2 / L / M / N
+TEAM3 / C / Q / L
