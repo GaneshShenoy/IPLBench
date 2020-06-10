@@ -103,12 +103,28 @@ class IPL:
             print()
         
     def franchiseBuddies(self, playerA, playerB):
-        print("***** franchiseBuddies function called ******")
-    
+        # Get the index of both the players
+        # traverse through the column see where both the players have value 1
+        # get that index and that is the index where they are in the same team
+        player_a_index = self.get_vertex_index(playerA)
+        player_b_index = self.get_vertex_index(playerB)
+        count = 0;
+        team_buddy = []
+        for i in range(self.num_of_vertex):
+            if (self.edges[i][player_a_index] and self.edges[i][player_b_index]):
+                team_buddy.append(self.PlayerTeam[i])
+                count += 1
+               
+        print("\n--------Function franchiseBuddies --------")
+        print ("Player A: ", playerA)
+        print ("Player B: ", playerB)
+        if (count):
+            print ("Franchise Buddies: Yes, ", *team_buddy)
+        else:
+            print ("They never playered together")
+        
     def findPlayerConnect(self, playerA, playerB):
-        print("***** findPlayerConnect function called ******")
-        
-        
+        pass
         
 if __name__ == "__main__":
     iplBench = IPL()
@@ -116,7 +132,7 @@ if __name__ == "__main__":
     iplBench.displayAll()
     iplBench.displayFranchises("Andrew Tye")
     iplBench.displayPlayers("KKR")
-    iplBench.franchiseBuddies(None, None)
+    iplBench.franchiseBuddies("Krunal Pandya", "Ishan Kishan" )
     iplBench.findPlayerConnect(None, None)
     print('ALL IPL bench functionalities are executed')
     
