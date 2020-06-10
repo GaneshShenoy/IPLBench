@@ -62,11 +62,38 @@ class IPL:
         print ("\nList of players")
         print (*list_players, sep ="\n")
         
-    def displayFranchises(self, player):
-        #print (self.edges)
-        pass
-    
+    def displayFranchises(self, player):    
+        franchise_list = []
+        
+        # get the index for the player
+        player_index = self.get_vertex_index(player)
+        
+        for i in range(self.num_of_vertex):
+            for j in range(self.num_of_vertex):
+                if (self.edges[i][j] != 0 and j == player_index):
+                    if self.PlayerTeam[i] not in franchise_list: 
+                        franchise_list.append(self.PlayerTeam[i])
+        
+        print("\n--------Function displayFranchises --------")
+        print (*franchise_list, sep ="\n")
+        
     def displayPlayers(self, franchise):
+        players_list = []
+        
+        # get the index for the player
+        player_index = self.get_vertex_index(franchise)
+        
+        
+        for j in range(self.num_of_vertex):
+            if (self.edges[player_index][j] != 0):
+                if self.PlayerTeam[j] not in players_list: 
+                    players_list.append(self.PlayerTeam[j])
+        
+        print("\n--------Function displayPlayers --------")
+        print (*players_list, sep ="\n")
+        
+    
+    def printMatrix(self, franchise):     
         print ("\n***********************")
         print (self.num_of_vertex)
         print ("***********************")
@@ -87,8 +114,8 @@ if __name__ == "__main__":
     iplBench = IPL()
     iplBench.readInputfile()
     iplBench.displayAll()
-    iplBench.displayFranchises(None)
-    iplBench.displayPlayers(None)
+    iplBench.displayFranchises("Andrew Tye")
+    iplBench.displayPlayers("KKR")
     iplBench.franchiseBuddies(None, None)
     iplBench.findPlayerConnect(None, None)
     print('ALL IPL bench functionalities are executed')
