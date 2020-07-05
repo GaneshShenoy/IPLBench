@@ -1,1 +1,101 @@
+
+
+--------Function displayFranchises --------
+Player name: Ben Stokes
+List of Franchises:
+RR
+RPS
+-------------------------------------------
+
+--------Function displayFranchises --------
+Player name: Robin Uthappa
+List of Franchises:
+KKR
+-------------------------------------------
+
+--------Function displayPlayers --------
+Player name: RR
+List of players:
+Ben Stokes
+Jaydev Unadkat
+Sanju Samson
+Jofra Archer
+G Krishnappa
+-------------------------------------------
+
+--------Function displayPlayers --------
+Player name: SRH
+List of players:
+Manish Pandey
+Rashid Khan
+Shikhar Dhawan
+-------------------------------------------
+
+--------Function franchiseBuddies --------
+Player A: Krunal Pandya
+Player B: Kieron Pollard
+Franchise Buddies: Yes, MI
+------------------------------------------
+--------Function findPlayerConnect --------
+Player A: Kedar Jadhav
+Player B: Ishan Kishan
+Related: Yes, Kedar Jadhav > CSK > Dwayne Bravo > GL > Ishan Kishan
+-------------------------------------------
 --------Function displayAll--------
+Total no. of franchises: 10
+Total no. of players: 41
+List of Franchises:
+RR
+KXIP
+KKR
+SRH
+MI
+CSK
+RCB
+DD
+GL
+RPS
+
+List of players:
+Ben Stokes
+Jaydev Unadkat
+Sanju Samson
+Jofra Archer
+G Krishnappa
+KL Rahul
+R Ashwin
+Andrew Tye
+Marcus Stoinis
+Glenn Maxwell
+Chris Lynn
+Mitchell Starc
+Dinesh Karthik
+Robin Uthappa
+Manish Pandey
+Chris Woakes
+Manish Pandey
+Rashid Khan
+Shikhar Dhawan
+G Krishnappa
+Krunal Pandya
+Ishan Kishan
+Kieron Pollard
+Kedar Jadhav
+Dwayne Bravo
+Karn Sharma
+KL Rahul
+Mitchell Starc
+Chris Woakes
+Yuzvendra Chahal
+Umesh Yadav
+Sanju Samson
+Glenn Maxwell
+Kedar Jadhav
+Karun Nair
+Andrew Tye
+Dinesh Karthik
+Ishan Kishan
+Dwayne Bravo
+Ben Stokes
+Jaydev Unadkat
+-----------------------------------

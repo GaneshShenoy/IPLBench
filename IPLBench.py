@@ -1,28 +1,81 @@
+'''
+IPL class solves the IPL bench for Auctioning the players for the teams.
+The diagraph is considered for the solution
+The below logic is considered for explaining the solution considering below example
+TEAM1   A   B   C
+TEAM2   L   M   N
+TEAM3   C   Q   L 
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+        | TEAM1 |   A   |   B   |   C   | TEAM2 |   L   |   M   |   N   | TEAM3 |   Q   |      |      |       |       |      |      |       | 
+------------------------------------------------------------------------------------------------------------------------------------------------
+ TEAM1  |       |   1   |   1   |   1   |       |       |       |       |       |       |      |      |       |       |      |      |       | 
+ ------------------------------------------------------------------------------------------------------------------------------------------------
+ A      |       |       |       |       |       |       |       |       |       |       |      |      |       |       |      |      |       | 
+ ------------------------------------------------------------------------------------------------------------------------------------------------
+ B      |       |       |       |       |       |       |       |       |       |       |      |      |       |       |      |      |       | 
+ ------------------------------------------------------------------------------------------------------------------------------------------------
+ C      |       |       |       |       |       |       |       |       |       |       |      |      |       |       |      |      |       | 
+ ------------------------------------------------------------------------------------------------------------------------------------------------
+ TEAM2  |       |       |       |       |       |   1   |   1   |   1   |       |       |      |      |       |       |      |      |       | 
+ ------------------------------------------------------------------------------------------------------------------------------------------------
+ L      |       |       |       |       |       |       |       |       |       |       |      |      |       |       |      |      |       | 
+ ------------------------------------------------------------------------------------------------------------------------------------------------
+ M      |       |       |       |       |       |       |       |       |       |       |      |      |       |       |      |      |       | 
+ ------------------------------------------------------------------------------------------------------------------------------------------------
+ N      |       |       |       |       |       |       |       |       |       |       |      |      |       |       |      |      |       | 
+ ------------------------------------------------------------------------------------------------------------------------------------------------
+ TEAM3  |       |       |       |   1   |       |   1   |       |       |       |   1   |      |      |       |       |      |      |       | 
+ ------------------------------------------------------------------------------------------------------------------------------------------------
+ Q      |       |       |       |       |       |       |       |       |       |       |      |      |       |       |      |      |       | 
+ ------------------------------------------------------------------------------------------------------------------------------------------------
+
+'''
 class IPL:
 
-    
+    '''
+    This funciton intialize the member variables of the the IPL class 
+    '''
     def __init__(self, max_num_vertexes = 70):
-        self.PlayerTeam = []
-        self.edges = [[0] * max_num_vertexes for _ in range(max_num_vertexes)]    
-        self.num_of_vertex = 0
-        self.file_output = open("outputPS10.txt", "a")
         
+        self.PlayerTeam =  []                                                     # Unique team name and the player names
+        self.edges = [[0] * max_num_vertexes for _ in range(max_num_vertexes)]    # Matrix to store directed edges (association)
+        self.num_of_vertex = 0                                                    # Number of the vertexes
+        self.file_output = open("outputPS10.txt", "w")                            # File creation for output of execution
+    
+    '''
+    distruction of the class
+    '''
     def __del__(self): 
         self.file_output.close()
         
+    '''
+    Add the vertex to the array
+    Also counts the number of vertex added to the array
+    '''
     def add_vertex(self, vertex):                                   
         if vertex not in self.PlayerTeam: 
             self.PlayerTeam.append(vertex)
             self.num_of_vertex += 1
             
+    '''
+    Returns index of the vertex for the given name
+    '''
     def get_vertex_index(self, key):
         return self.PlayerTeam.index(key)
-        
+       
+    '''
+    Add edges to the double dimension array
+    '''
     def add_edge(self, from_key, to_key):       
         #self.add_vertex(from_key) # this keey is already added.
         self.add_vertex(to_key)
         self.edges[self.get_vertex_index(from_key)][self.get_vertex_index(to_key)] = 1      
-        
+   
+    '''
+    Read the input file for the data of team and players
+    By default the input file name is inputPS10.txt
+    '''
     def readInputfile(self, inputfile = "inputPS10.txt"):       
         with open(inputfile) as input_file_reader:
             line = input_file_reader.readline()
@@ -37,6 +90,31 @@ class IPL:
                 line = input_file_reader.readline()
             input_file_reader.close()      
     
+    '''
+    Read the prompts file for execution of defined function in with parameters
+    By default the input file name is promptsPS10.txt
+    ''' 
+    def readPromptsfile(self, inputfile = "promptsPS10.txt"):
+        with open(inputfile) as input_file_reader:
+            line = input_file_reader.readline()
+            while line != '':
+                prompt = [prompts.strip() for prompts in line.split(':')]
+              
+                if (prompt[0] == "findFranchise"):                    
+                    iplBench.displayFranchises(prompt[1])
+                if (prompt[0] == "listPlayers"):                    
+                    iplBench.displayPlayers(prompt[1])
+                if (prompt[0] == "franchiseBuddies"):                    
+                    iplBench.franchiseBuddies(prompt[1], prompt[2] )    
+                if (prompt[0] == "playerConnect"):                    
+                    iplBench.findPlayerConnect(prompt[1], prompt[2] )  
+ 
+                line = input_file_reader.readline()
+        input_file_reader.close()      
+    
+    '''
+    Display all the parameters
+    '''
     def displayAll(self):
         list_franchise= []
         list_players = []
@@ -55,18 +133,18 @@ class IPL:
                 list_franchise.append(self.PlayerTeam[i])
                 num_of_franchise += 1
          
-        print ("--------Function displayAll--------")
-        print ("Total no. of franchises: ", num_of_franchise)
-        print ("Total no. of players: ", num_of_players)
+        self.file_output.write ("\n--------Function displayAll--------")
+        self.file_output.write ("\nTotal no. of franchises: {0}".format(num_of_franchise))
+        self.file_output.write ("\nTotal no. of players: {0}".format(num_of_players))        
+        self.file_output.write ("\nList of Franchises:\n")
+        self.file_output.write ('\n'.join(list_franchise))        
+        self.file_output.write ("\n\nList of players:\n")
+        self.file_output.write ('\n'.join(list_players))
+        self.file_output.write ("\n-----------------------------------")
         
-        print ("\nList of Franchises:")
-        print (*list_franchise, sep ="\n")
-        
-        print ("\nList of players:")
-        print (*list_players, sep ="\n")
-        print ("-----------------------------------")
-        
-        
+    '''
+    Display all the franchises for the given player
+    '''
     def displayFranchises(self, player):    
         franchise_list = []
         
@@ -78,13 +156,16 @@ class IPL:
                 if (self.edges[i][j] != 0 and j == player_index):
                     if self.PlayerTeam[i] not in franchise_list: 
                         franchise_list.append(self.PlayerTeam[i])
+                        
+        self.file_output.write ("\n\n--------Function displayFranchises --------")
+        self.file_output.write ("\nPlayer name: {0}".format(player))
+        self.file_output.write ("\nList of Franchises:\n")
+        self.file_output.write ('\n'.join(franchise_list))
+        self.file_output.write ("\n-------------------------------------------")
         
-        print("--------Function displayFranchises --------")
-        print("Player name: {0}".format(player))
-        print("List of Franchises:")
-        print (*franchise_list, sep ="\n")
-        print("-------------------------------------------")
-        
+    '''
+    Display all the players for the given franchise
+    '''
     def displayPlayers(self, franchise):
         players_list = []
         
@@ -97,12 +178,12 @@ class IPL:
                 if self.PlayerTeam[j] not in players_list: 
                     players_list.append(self.PlayerTeam[j])
         
-        print("--------Function displayPlayers --------")
-        print("Franchise name: {0}".format(franchise))
-        print("List of players:")
-        print (*players_list, sep ="\n")
-        print("----------------------------------------")
-    
+        self.file_output.write ("\n\n--------Function displayPlayers --------")
+        self.file_output.write ("\nPlayer name: {0}".format(franchise))
+        self.file_output.write ("\nList of players:\n")
+        self.file_output.write ('\n'.join(players_list))
+        self.file_output.write ("\n-------------------------------------------")
+            
     def printMatrix(self, franchise):     
         print ("\n***********************")
         print (self.num_of_vertex)
@@ -112,6 +193,10 @@ class IPL:
                 print(self.edges[i][j], end=' ')
             print()
             
+    '''
+    Returns the team index value for the planyers from the edge table.
+    Assumption: As per the given problem, one player can exist in maximum of two teams
+    '''
     def getTeamIndexForPlayers(self, playerA, playerB):
         player_a_index = self.get_vertex_index(playerA)
         player_b_index = self.get_vertex_index(playerB)
@@ -132,6 +217,9 @@ class IPL:
                     playerB_teams[1] = i
         return playerA_teams, playerB_teams
         
+    '''
+    Check whether the players are in the same franchise
+    '''
     def franchiseBuddies(self, playerA, playerB):
         # Get the index of both the players
         # traverse through the column see where both the players have value 1
@@ -145,49 +233,60 @@ class IPL:
                 team_buddy.append(self.PlayerTeam[i])
                 count += 1              
         
-        print("--------Function franchiseBuddies --------")
-        print("Player A: {0}".format(playerA))
-        print("Player B: {0}".format(playerB))
+        self.file_output.write ("\n\n--------Function franchiseBuddies --------")
+        self.file_output.write ("\nPlayer A: {0}".format(playerA))
+        self.file_output.write ("\nPlayer B: {0}".format(playerB))
         if (count):
-            print ("Franchise Buddies: Yes, ", *team_buddy)
-        else:
-            print ("They never playered together")
-        print("------------------------------------------")
+            self.file_output.write ("\nFranchise Buddies: Yes, ")
+            self.file_output.write ('\n'.join(team_buddy))
+        else :
+            self.file_output.write ("\nThey never playered together")
+        self.file_output.write ("\n------------------------------------------")
          
+    '''
+    Check wether the players are connected based on other player who shares the two franchises.
+    '''
     def findPlayerConnect(self, playerA, playerB):
         # Find which team the player belongs to for both the players
         # loop through both the team and find where both the values are 1
         playerA_teams, playerB_teams = self.getTeamIndexForPlayers(playerA, playerB)      
         found_player = False;
         
-        print ("--------Function findPlayerConnect --------")
-        print ("Player A: {0}".format(playerA))
-        print ("Player B: {0}".format(playerB))
+        self.file_output.write  ("\n--------Function findPlayerConnect --------")
+        self.file_output.write  ("\nPlayer A: {0}".format(playerA))
+        self.file_output.write  ("\nPlayer B: {0}".format(playerB))
+        
+        # Player might be in maximum of two teams
         for player_a in range (2) :
             if (playerA_teams[player_a] == None): 
                 continue
             
+            # For each player, there might be two teams we can compare with.
             for player_b in range(2) :
                 if (playerB_teams[player_b] == None): 
                     continue
                 
+                # If we find that the player shares both the team
                 for edge in range(self.num_of_vertex):
                     if (self.edges[playerA_teams[player_a]][edge] and self.edges[playerB_teams[player_b]][edge]):                       
-                        print ('Related: Yes, {0} > {1} > {2} > {3} > {4}'.format(playerA, self.PlayerTeam[playerA_teams[player_a]], self.PlayerTeam[edge], self.PlayerTeam[playerB_teams[player_b]], playerB))
+                        self.file_output.write  ('\nRelated: Yes, {0} > {1} > {2} > {3} > {4}'.format(playerA, self.PlayerTeam[playerA_teams[player_a]], 
+                                                                                                      self.PlayerTeam[edge], self.PlayerTeam[playerB_teams[player_b]], playerB))
                         found_player = True
 
         if (False == found_player):
-            print ("No common player found between planyers {0} and {1}".format(playerA, playerB))
+            self.file_output.write  ("\nNo common player found between planyers {0} and {1}".format(playerA, playerB))
             
-        print ("-------------------------------------------")
+        self.file_output.write  ("\n-------------------------------------------")
         
 if __name__ == "__main__":
     iplBench = IPL()
-    iplBench.readInputfile()
+    iplBench.readInputfile("inputPS10.txt")
+    iplBench.readPromptsfile("promptsPS10.txt")
     iplBench.displayAll()
+    
+    '''
     iplBench.displayFranchises("Andrew Tye")
     iplBench.displayPlayers("KKR")
     iplBench.franchiseBuddies("Krunal Pandya", "Ishan Kishan" )
     iplBench.findPlayerConnect("Kedar Jadhav", "Ishan Kishan")
-    print('ALL IPL bench functionalities are executed')
-    
+    '''
