@@ -265,24 +265,6 @@ class IPL:
         self.file_output.write  ("\nPlayer A: {0}".format(playerA))
         self.file_output.write  ("\nPlayer B: {0}".format(playerB))
         
-        '''
-        # Player might be in maximum of two teams
-        for player_a in range (2) :
-            if (playerA_teams[player_a] == None): 
-                continue
-            
-            # For each player, there might be two teams we can compare with.
-            for player_b in range(2) :
-                if (playerB_teams[player_b] == None): 
-                    continue
-                
-                # If we find that the player shares both the team
-                for edge in range(self.num_of_vertex):
-                    if (self.edges[playerA_teams[player_a]][edge] and self.edges[playerB_teams[player_b]][edge]):                       
-                        self.file_output.write  ('\nRelated: Yes, {0} > {1} > {2} > {3} > {4}'.format(playerA, self.PlayerTeam[playerA_teams[player_a]], 
-                                                                                                      self.PlayerTeam[edge], self.PlayerTeam[playerB_teams[player_b]], playerB))
-                        found_player = True
-        '''
         for edge in range (self.num_of_vertex):
             
             if (playerA_teams[0] != None and playerA_teams[0] != None ): 
