@@ -14,7 +14,7 @@ KKR
 -------------------------------------------
 
 --------Function displayPlayers --------
-Player name: RR
+Franchise name: RR
 List of players:
 Ben Stokes
 Jaydev Unadkat
@@ -24,7 +24,7 @@ G Krishnappa
 -------------------------------------------
 
 --------Function displayPlayers --------
-Player name: SRH
+Franchise name: SRH
 List of players:
 Manish Pandey
 Rashid Khan
@@ -43,7 +43,7 @@ Related: Yes, Kedar Jadhav > CSK > Dwayne Bravo > GL > Ishan Kishan
 -------------------------------------------
 --------Function displayAll--------
 Total no. of franchises: 10
-Total no. of players: 41
+Total no. of players: 27
 List of Franchises:
 RR
 KXIP
@@ -73,29 +73,15 @@ Dinesh Karthik
 Robin Uthappa
 Manish Pandey
 Chris Woakes
-Manish Pandey
 Rashid Khan
 Shikhar Dhawan
-G Krishnappa
 Krunal Pandya
 Ishan Kishan
 Kieron Pollard
 Kedar Jadhav
 Dwayne Bravo
 Karn Sharma
-KL Rahul
-Mitchell Starc
-Chris Woakes
 Yuzvendra Chahal
 Umesh Yadav
-Sanju Samson
-Glenn Maxwell
-Kedar Jadhav
 Karun Nair
-Andrew Tye
-Dinesh Karthik
-Ishan Kishan
-Dwayne Bravo
-Ben Stokes
-Jaydev Unadkat
 -----------------------------------
