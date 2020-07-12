@@ -34,54 +34,11 @@ Shikhar Dhawan
 --------Function franchiseBuddies --------
 Player A: Krunal Pandya
 Player B: Kieron Pollard
-Franchise Buddies: Yes, MI
-------------------------------------------
+Franchise Buddies: Yes, 
+ MI
+-------------------------------------------
 --------Function findPlayerConnect --------
 Player A: Kedar Jadhav
 Player B: Ishan Kishan
 Related: Yes, Kedar Jadhav > CSK > Dwayne Bravo > GL > Ishan Kishan
 -------------------------------------------
---------Function displayAll--------
-Total no. of franchises: 10
-Total no. of players: 27
-List of Franchises:
-RR
-KXIP
-KKR
-SRH
-MI
-CSK
-RCB
-DD
-GL
-RPS
-
-List of players:
-Ben Stokes
-Jaydev Unadkat
-Sanju Samson
-Jofra Archer
-G Krishnappa
-KL Rahul
-R Ashwin
-Andrew Tye
-Marcus Stoinis
-Glenn Maxwell
-Chris Lynn
-Mitchell Starc
-Dinesh Karthik
-Robin Uthappa
-Manish Pandey
-Chris Woakes
-Rashid Khan
-Shikhar Dhawan
-Krunal Pandya
-Ishan Kishan
-Kieron Pollard
-Kedar Jadhav
-Dwayne Bravo
-Karn Sharma
-Yuzvendra Chahal
-Umesh Yadav
-Karun Nair
------------------------------------
